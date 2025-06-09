@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block body %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Profile /</span> Edit Profile
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">Edit Profile Details</h5>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                            {% if app.user.profile.type == 'tutor' %}
+                                <div class="mb-3 col-md-6">
+                                    {{ form_label(form.tutorProfile.hourlyRate, 'Hourly Rate', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.tutorProfile.hourlyRate, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.tutorProfile.hourlyRate) }}
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    {{ form_label(form.tutorProfile.bio, 'Bio', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.tutorProfile.bio, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+                                    {{ form_errors(form.tutorProfile.bio) }}
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    {{ form_label(form.tutorProfile.subjects, 'Subjects', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.tutorProfile.subjects, {'attr': {'class': 'form-select'}}) }}
+                                    {{ form_errors(form.tutorProfile.subjects) }}
+                                </div>
+                            {% else %}
+                                <div class="mb-3 col-md-6">
+                                    {{ form_label(form.studentProfile.gradeLevel, 'Grade Level', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.studentProfile.gradeLevel, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.studentProfile.gradeLevel) }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    {{ form_label(form.studentProfile.parentEmail, 'Parent Email', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.studentProfile.parentEmail, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(form.studentProfile.parentEmail) }}
+                                </div>
+                            {% endif %}
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                                <a href="{{ path('app_profile_show') }}" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

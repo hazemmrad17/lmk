@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documentation - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4">Documentation</h4>
+
+        <div class="row">
+            <!-- Getting Started -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Getting Started</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Creating an Account</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Setting Up Your Profile</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Navigating the Platform</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Students -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">For Students</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Finding a Tutor</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Booking Sessions</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Managing Your Schedule</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Tutors -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">For Tutors</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Setting Up Your Profile</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Managing Availability</span>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="d-flex align-items-center">
+                                    <i class="bx bx-right-arrow-alt me-2"></i>
+                                    <span>Creating Courses</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Resources -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Additional Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Video Tutorials</h6>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2">
+                                        <a href="#" class="d-flex align-items-center">
+                                            <i class="bx bx-video me-2"></i>
+                                            <span>Platform Overview</span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#" class="d-flex align-items-center">
+                                            <i class="bx bx-video me-2"></i>
+                                            <span>Booking Process</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Downloadable Guides</h6>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2">
+                                        <a href="#" class="d-flex align-items-center">
+                                            <i class="bx bx-file me-2"></i>
+                                            <span>User Manual (PDF)</span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#" class="d-flex align-items-center">
+                                            <i class="bx bx-file me-2"></i>
+                                            <span>Quick Start Guide (PDF)</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

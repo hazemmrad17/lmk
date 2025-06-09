@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            {{ form_label(form.title, 'Title', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.title) }}
+        </div>
+
+        <div class="col-md-12 mb-3">
+            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+            {{ form_errors(form.description) }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+            {{ form_label(form.price, 'Price (€)', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.price) }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+            {{ form_label(form.duration, 'Duration (minutes)', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.duration) }}
+        </div>
+
+        <div class="col-md-12 mb-3">
+            {{ form_label(form.subjects, 'Subjects', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.subjects, {'attr': {'class': 'form-select'}}) }}
+            {{ form_errors(form.subjects) }}
+        </div>
+
+        <div class="col-md-12 mb-3">
+            {{ form_label(form.materials, 'Course Materials', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.materials, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.materials) }}
+            <small class="text-muted">You can select multiple files. Maximum file size: 10MB</small>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-check">
+                {{ form_widget(form.isActive, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(form.isActive, 'Active', {'label_attr': {'class': 'form-check-label'}}) }}
+            </div>
+            {{ form_errors(form.isActive) }}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2">
+            <i class="bx bx-save me-1"></i>
+            {{ button_label|default('Save') }}
+        </button>
+        <a href="{{ path('app_course_index') }}" class="btn btn-outline-secondary">
+            <i class="bx bx-x me-1"></i>
+            Cancel
+        </a>
+    </div>
+{{ form_end(form) }} 

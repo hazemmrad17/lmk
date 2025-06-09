@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block body %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">My Bookings</h4>
+
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Booking History</h5>
+            {% if is_granted('ROLE_STUDENT') %}
+                <a href="{{ path('booking_new') }}" class="btn btn-primary">
+                    <i class="bx bx-plus me-1"></i>
+                    New Booking
+                </a>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>Course</th>
+                            {% if is_granted('ROLE_TUTOR') %}
+                                <th>Student</th>
+                            {% else %}
+                                <th>Tutor</th>
+                            {% endif %}
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for booking in bookings %}
+                            <tr>
+                                <td>{{ booking.startTime|date('Y-m-d') }}</td>
+                                <td>{{ booking.startTime|date('H:i') }}</td>
+                                <td>{{ booking.endTime.diff(booking.startTime).format('%H:%I') }}</td>
+                                <td>
+                                    {% if booking.course %}
+                                        <a href="{{ path('course_show', {'slug': booking.course.slug}) }}">
+                                            {{ booking.course.title }}
+                                        </a>
+                                    {% else %}
+                                        <span class="text-muted">No course</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if is_granted('ROLE_TUTOR') %}
+                                        {{ booking.student.profile.user.email }}
+                                    {% else %}
+                                        {{ booking.tutor.profile.user.email }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-label-{{ booking.status == 'confirmed' ? 'success' : (booking.status == 'pending' ? 'warning' : (booking.status == 'cancelled' ? 'danger' : 'secondary')) }}">
+                                        {{ booking.status|title }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn p-0" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="actionDropdown">
+                                            <a class="dropdown-item" href="{{ path('booking_show', {'id': booking.id}) }}">
+                                                <i class="bx bx-show me-1"></i> View
+                                            </a>
+                                            {% if booking.status == 'pending' and booking.startTime > date() %}
+                                                <form method="post" action="{{ path('booking_cancel', {'id': booking.id}) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('cancel' ~ booking.id) }}">
+                                                    <button class="dropdown-item text-danger">
+                                                        <i class="bx bx-x-circle me-1"></i> Cancel
+                                                    </button>
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">No bookings found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

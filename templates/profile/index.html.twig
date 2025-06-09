@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <img src="{{ profile.profilePicture ? asset('uploads/profile_pictures/' ~ profile.profilePicture) : asset('images/default-profile.png') }}" 
+                         alt="Profile Picture" 
+                         class="rounded-circle img-fluid mb-3"
+                         style="width: 150px; height: 150px; object-fit: cover;">
+                    <h5 class="mb-1">{{ profile.firstName }} {{ profile.lastName }}</h5>
+                    <p class="text-muted mb-3">{{ profile.userType|capitalize }}</p>
+                    <div class="d-flex justify-content-center mb-2">
+                        <a href="{{ path('account_settings') }}" class="btn btn-outline-primary me-2">Settings</a>
+                        <a href="{{ path('billing') }}" class="btn btn-outline-secondary">Billing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Profile Information</h4>
+                    {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.firstName) }}
+                                {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.firstName) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.lastName) }}
+                                {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.lastName) }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(form.bio) }}
+                            {{ form_widget(form.bio, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+                            {{ form_errors(form.bio) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.phoneNumber) }}
+                                {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.phoneNumber) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.userType) }}
+                                {{ form_widget(form.userType, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.userType) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                {{ form_label(form.address) }}
+                                {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.address) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.city) }}
+                                {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.city) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_label(form.country) }}
+                                {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.country) }}
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

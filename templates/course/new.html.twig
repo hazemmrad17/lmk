@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Course{% endblock %}
+
+{% block body %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Courses /</span> New Course
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">Create New Course</h5>
+                <div class="card-body">
+                    {{ include('course/_form.html.twig', {'button_label': 'Create Course'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
